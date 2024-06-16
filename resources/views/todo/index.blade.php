@@ -27,7 +27,8 @@
                 <div class="card">
                     <div class="card-body">
                         <h1 class="text-center text-primary">Todo Application</h1>
-                        <form action="">
+                        <form action="{{ route('todo.store') }}" method="post">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-12">
                                     <input type="text" name="task" id="task" class="form-control mt-4 input ">
@@ -39,15 +40,16 @@
                         </form>
                         <table class="table mt-4 shadow">
                             <tr>
-                                <th>Sr#</th>
                                 <th>Task</th>
-                                <th>Date</th>
                                 <th>Delete</th>
                             </tr>
                             <tr class="text-align-center">
-                                <td>1</td>
-                                <td>Shopping pa jana ha</td>
-                                <td>01-3-2024</td>
+                                <td>
+                                    @foreach($tasks as $task)
+                                    {{ $task->task }}
+                                    <br>
+                                    @endforeach
+                                </td>
                                 <td><button type="submit" name="delete" class="btn btn-md btn-danger">Delete</button></td>
                             </tr>
                         </table>

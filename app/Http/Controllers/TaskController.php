@@ -12,8 +12,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $task = Task::all();
-        return view('todo.index');
+        $tasks = Task::all();
+        return view('todo.index', compact('tasks'));
     }
 
     /**
@@ -30,15 +30,16 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'task' => 'required|string|max:40',
+            'task' => 'required|string|max:255',
         ]);
-        $task = $request->input('task');
+        $taskName = $request->input('task'); 
 
         $todo = new Task();
-        $todo->task = $task;
+        $todo->task = $taskName;
         $todo->save();
-        return redirect()->route('todo.index')->with('success', 'Data added successfully');
+        return redirect('todo.index')->with('success', 'Data added successfully');
     }
+
 
     /**
      * Display the specified resource.
