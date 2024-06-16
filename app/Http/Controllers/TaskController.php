@@ -40,12 +40,7 @@ class TaskController extends Controller
         return back()->with('success', 'Data added successfully');
     }
 
-    public function delete($id)
-    {
-        $todo=Task::Where('id',$id)->first();
-        $todo->delete();
-        return back()
-    }
+   
     /**
      * Display the specified resource.
      */
@@ -76,5 +71,8 @@ class TaskController extends Controller
     public function destroy(string $id)
     {
         //
+        $todo=Task::Where('id',$id)->first();
+        $todo->delete();
+        return back();
     }
 }
