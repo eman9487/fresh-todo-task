@@ -9,8 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <style>
-        table {
-            border: 2px solid black;
+        table , th, td{
+            border: 1px solid blue;
         }
 
         .input {
@@ -50,7 +50,7 @@
                                     <br>
                                     @endforeach
                                 </td>
-                                <td><button type="submit" name="delete" class="btn btn-md btn-danger">Delete</button></td>
+                                <td><button type="submit" name="delete" class="btn btn-sm btn-danger">Delete</button></td>
                             </tr>
                         </table>
                     </div>

@@ -37,7 +37,7 @@ class TaskController extends Controller
         $todo = new Task();
         $todo->task = $taskName;
         $todo->save();
-        return redirect('todo.index')->with('success', 'Data added successfully');
+        return back()->with('success', 'Data added successfully');
     }
 
 
