@@ -48,11 +48,11 @@
                                     @foreach($tasks as $task)
                                     {{ $task->task }}
                                     <br>
-                                    @endforeach
                                 </td>
                                 <td>
-             <a href="tasks/{{ $tasks->id }}/delete" class="btn  btn-sm btn-danger">Delete</a>
-                            </td>
+                                    <a href="tasks/{{ $tasks->id }}/delete" class="btn  btn-sm btn-danger">Delete</a>
+                                </td>
+                                @endforeach
                             </tr>
                         </table>
                     </div>
