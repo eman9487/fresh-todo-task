@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -11,6 +12,7 @@ class TaskController extends Controller
      */
     public function index()
     {
+        $task = Task::all();
         return view('todo.index');
     }
 
@@ -27,7 +29,15 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'task' => 'required|string|max:40',
+        ]);
+        $task = $request->input('task');
+
+        $todo = new Task();
+        $todo->task = $task;
+        $todo->save();
+        return redirect()->route('todo.index')->with('success', 'Data added successfully');
     }
 
     /**
