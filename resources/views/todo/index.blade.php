@@ -12,7 +12,8 @@
         table {
             border: 2px solid black;
         }
-        .input{
+
+        .input {
             border-color: black;
         }
     </style>
