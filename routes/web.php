@@ -23,5 +23,6 @@ require __DIR__ . '/auth.php';
 Route::resource('/', TaskController::class);
 
 Route::get('/tasks', [TaskController::class, 'index'])->name('todo.index');
+Route::get('/tasks/{id}/delete', [TaskController::class, 'index'])->name('todo.delete');
 
 Route::post('/tasks', [TaskController::class, 'store'])->name('todo.store');

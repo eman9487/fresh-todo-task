@@ -50,7 +50,9 @@
                                     <br>
                                     @endforeach
                                 </td>
-                                <td><button type="submit" name="delete" class="btn btn-sm btn-danger">Delete</button></td>
+                                <td>
+             <a href="tasks/{{ $tasks->id }}/delete" class="btn  btn-sm btn-danger">Delete</a>
+                            </td>
                             </tr>
                         </table>
                     </div>
