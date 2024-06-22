@@ -69,7 +69,7 @@
                                     <form action="/tasks/{{$task->id}}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                                     </form>
                                 </td>
                             </tr>
