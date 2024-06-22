@@ -16,7 +16,7 @@
         }
 
         .input {
-            border-color: black;
+            border-color: blue;
         }
     </style>
 
@@ -26,12 +26,26 @@
     <div class="container">
         <div class="row justify-content-center align-items-center min-vh-100">
             <div class="col-lg-8">
-                <div class="card">
+                <div class="card shadow">
                     <div class="card-body">
                         <h1 class="text-center text-primary">Todo Application</h1>
                         <form action="{{ route('todo.store') }}" method="post">
                             @csrf
                             <div class="row">
+                                @if (session ('success'))
+                                <div class="alert alert-success">
+                                    <b>Success!</b> {{ session ('success')}}
+                                </div>
+                                @endif
+                                @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach($errors->all() as $error)
+                                        <li>{{$error}}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                @endif
                                 <div class="col-lg-12">
                                     <input type="text" name="task" id="task" class="form-control mt-4 input ">
                                 </div>
@@ -45,17 +59,21 @@
                                 <th>Task</th>
                                 <th>Delete</th>
                             </tr>
+                            @foreach($tasks as $task)
                             <tr class="text-align-center">
                                 <td>
-                                    @foreach($tasks as $task)
                                     {{ $task->task }}
                                     <br>
-                                    @endforeach
                                 </td>
                                 <td>
-                                    <a href="tasks/{{ $tasks->id }}/delete" class="btn  btn-sm btn-danger">Delete</a>
+                                    <form action="/tasks/{{$task->id}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
+                            @endforeach
                         </table>
                     </div>
                 </div>

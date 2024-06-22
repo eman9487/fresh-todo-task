@@ -32,7 +32,7 @@ class TaskController extends Controller
         $request->validate([
             'task' => 'required|string|max:255',
         ]);
-        $taskName = $request->input('task'); 
+        $taskName = $request->input('task');
 
         $todo = new Task();
         $todo->task = $taskName;
@@ -40,7 +40,7 @@ class TaskController extends Controller
         return back()->with('success', 'Data added successfully');
     }
 
-   
+
     /**
      * Display the specified resource.
      */
@@ -68,11 +68,10 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
-        $todo=Task::Where('id',$id)->first();
-        $todo->delete();
-        return back();
+        $task = Task::Where('id', $id)->first();
+        $task->delete();
+        return redirect()->back()->with('success', 'Data deleted successfully');
     }
 }
