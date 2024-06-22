@@ -12,11 +12,12 @@
         table,
         th,
         td {
-            border: 1px solid blue;
+            border: 1px solid #106eea;
         }
 
         .input {
-            border-color: blue;
+            border-color: #106eea;
+            border-radius: 0;
         }
     </style>
 
@@ -29,7 +30,7 @@
                 <div class="card shadow">
                     <div class="card-body">
                         <h1 class="text-center text-primary">Todo Application</h1>
-                        <form action="{{ route('todo.store') }}" method="post">
+                        <form action="{{ route('task.store') }}" method="post">
                             @csrf
                             <div class="row">
                                 @if (session ('success'))
@@ -66,9 +67,9 @@
                                     <br>
                                 </td>
                                 <td>
-                                    <form action="/tasks/{{$task->id}}" method="post">
+                                    <form action="{{ route('task.destroy', $task->id) }}" method="post">
                                         @csrf
-                                        @method('DELETE')
+                                        @method('delete')
                                         <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                                     </form>
                                 </td>
